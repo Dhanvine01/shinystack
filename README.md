@@ -53,6 +53,8 @@ Enforce a score threshold in CI while allowing a few checks to remain incomplete
 node src/cli.js --fail-under 80
 ```
 
+For a copy-paste GitHub Actions workflow, see the [CI integration guide](docs/ci-integration.md).
+
 ## Checks
 
 The first release checks for:
