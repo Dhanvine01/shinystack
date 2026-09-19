@@ -86,7 +86,7 @@ ShinyStack returns these exit codes:
 | 2 | The command-line arguments are invalid. |
 
 For example, this command returns code 1 when the repository score is below
-80 percent:
+80 percent :
 
 ```bash
 node src/cli.js --fail-under 80
