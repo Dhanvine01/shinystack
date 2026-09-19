@@ -91,3 +91,22 @@ test("markdown is accepted as an alias for md", () => {
   assert.equal(result.status, 0);
   assert.match(result.stdout, /\| Status \| Check \| Details \|/);
 });
+
+
+test("ignored directories are not scanned", () => {
+  const root = temporaryRepository();
+
+  writeFile(root, "node_modules/fake.test.js");
+  writeFile(root, "dist/README.md");
+  writeFile(root, "coverage/package.json");
+  writeFile(root, ".cache/CONTRIBUTING.md");
+
+  const report = auditRepository(root);
+
+  assert.equal(report.passed, 0);
+  assert.equal(report.score, 0);
+  assert.equal(report.checks[0].found, false);
+  assert.equal(report.checks[8].found, false);
+  assert.equal(report.checks[10].found, false);
+});
+
